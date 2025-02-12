@@ -10,12 +10,12 @@
       prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.HelloController">
    <VBox prefHeight="400.0" prefWidth="298.0">
-      <Button mnemonicParsing="false" onMouseClicked="#getDocument" text="Button"/>
+      <Button mnemonicParsing="false" onMouseClicked="#getDocument" text="Importar archivo"/>
       <TextArea fx:id="textArea" prefHeight="330.0" prefWidth="298.0"/>
    </VBox>
    <Separator prefWidth="200.0" visible="false"/>
    <VBox prefHeight="400.0" prefWidth="303.0">
-      <Button mnemonicParsing="false" text="Button"/>
+      <Button mnemonicParsing="false" onMouseClicked="#createDocument"  text="Exportar archivo"/>
       <TextArea prefHeight="328.0" prefWidth="303.0"/>
    </VBox>
 </HBox>
