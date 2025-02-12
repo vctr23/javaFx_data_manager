@@ -12,7 +12,10 @@ EN: File import and export application with JavaFX.
 
 # Descripción del proyecto
 
-Este proyecto requiere ciertas dependencias que están listadas en el archivo `requirements.txt`. Puedes instalar todas las dependencias necesarias utilizando conda.
+Este proyecto deberia funcionar sin ningun requisito previo simplemente ejecutar:
+
+<code>
+git clone https://github.com/vctr23/javaFx_data_manager.git</code>
 
 ## Autores
 
@@ -41,6 +44,7 @@ Este proyecto requiere ciertas dependencias que están listadas en el archivo `r
 </table>
 
 </div>
+
 
 ## Licencia
 
