@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -40,11 +41,30 @@ public class MainController implements Initializable {
         }
     }
 
+    @FXML
+    void showPopUp(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popup.fxml"));
+            Parent root = loader.load();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Ventana Emergente");
+
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+            popupStage.showAndWait(); // Bloquea la ventana principal hasta que se cierre el pop-up
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("src\\main\\java"));
     }
 
+    @FXML
     public void changeToFileView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("File-view.fxml"));
         Stage stage = new Stage();
@@ -55,6 +75,7 @@ public class MainController implements Initializable {
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
+    @FXML
     public void changeToAPIView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("API-view.fxml"));
         Stage stage = new Stage();
@@ -65,6 +86,7 @@ public class MainController implements Initializable {
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
+    @FXML
     public void changeToDBView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("DB-view.fxml"));
         Stage stage = new Stage();
