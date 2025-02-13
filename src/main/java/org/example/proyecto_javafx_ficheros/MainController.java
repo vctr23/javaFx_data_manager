@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -48,8 +49,9 @@ public class MainController implements Initializable {
             Parent root = loader.load();
 
             Stage popupStage = new Stage();
+            popupStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
             popupStage.initModality(Modality.APPLICATION_MODAL);
-            popupStage.setTitle("Ventana Emergente");
+            popupStage.setTitle("Filename");
 
             Scene scene = new Scene(root);
             popupStage.setScene(scene);
@@ -68,6 +70,7 @@ public class MainController implements Initializable {
     public void changeToFileView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("File-view.fxml"));
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
         stage.setScene(new Scene(root));
         stage.setTitle("File view");
         stage.show();
@@ -79,6 +82,7 @@ public class MainController implements Initializable {
     public void changeToAPIView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("API-view.fxml"));
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
         stage.setScene(new Scene(root));
         stage.setTitle("API view");
         stage.show();
@@ -90,6 +94,7 @@ public class MainController implements Initializable {
     public void changeToDBView(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("DB-view.fxml"));
         Stage stage = new Stage();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
         stage.setScene(new Scene(root));
         stage.setTitle("DB view");
         stage.show();

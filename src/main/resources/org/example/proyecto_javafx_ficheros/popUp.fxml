@@ -16,9 +16,9 @@
                     <HBox prefHeight="100.0" prefWidth="200.0">
                         <children>
                             <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#createDocument"
-                                    text="Guardar"/>
+                                    text="Save file"/>
                             <Separator prefWidth="75.0"/>
-                            <Button fx:id="btnCerrar" onAction="#cerrarPopUp" text="Cerrar"/>
+                            <Button fx:id="btnCerrar" onAction="#cerrarPopUp" text="Close window"/>
                         </children>
                     </HBox>
                 </children>

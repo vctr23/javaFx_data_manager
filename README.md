@@ -20,7 +20,7 @@ Este proyecto deberia funcionar sin ningun requisito previo simplemente ejecutar
 
 <div align="center">
 
-![GitHub contributors](https://img.shields.io/github/contributors/NaviStarp/RestTalk)
+![GitHub contributors](https://img.shields.io/github/contributors/vctr23/javaFx_data_manager)
 
 <table>
   <tr>
