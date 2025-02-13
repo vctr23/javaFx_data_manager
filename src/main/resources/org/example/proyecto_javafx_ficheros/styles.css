@@ -7,6 +7,14 @@
     -fx-text-fill: white;
 }
 
+#selected {
+    -fx-background-color: gray;
+}
+
+.grid-pane {
+    -fx-background-color: lightgray;
+}}
+
 .hbox{
    -fx-background-color: gray;
 }

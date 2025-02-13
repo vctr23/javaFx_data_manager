@@ -21,7 +21,7 @@
                 <Insets bottom="50.0" left="20.0" right="20.0" top="50.0" />
             </VBox.margin>
         </Button>
-        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="API">
+        <Button id="selected" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="API">
             <VBox.margin>
                 <Insets bottom="50.0" left="20.0" right="20.0" />
             </VBox.margin>
