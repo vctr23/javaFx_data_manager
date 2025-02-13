@@ -1,73 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Records>
-  <Record>
-    <Titulo>The Legend of Zelda</Titulo>
-    <Genero>Aventura</Genero>
-    <Plataforma>Nintendo</Plataforma>
-    <Ano>1986</Ano>
-    <Desarrollador>N/A</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Super Mario Bros</Titulo>
-    <Genero>Plataformas</Genero>
-    <Plataforma>Nintendo</Plataforma>
-    <Ano>N/A</Ano>
-    <Desarrollador>Nintendo</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Halo: Combat Evolved</Titulo>
-    <Genero>Disparos</Genero>
-    <Plataforma>N/A</Plataforma>
-    <Ano>2001</Ano>
-    <Desarrollador>Bungie</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>The Witcher 3</Titulo>
-    <Genero>RPG</Genero>
-    <Plataforma>PC</Plataforma>
-    <Ano>N/A</Ano>
-    <Desarrollador>CD Projekt Red</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Minecraft</Titulo>
-    <Genero>N/A</Genero>
-    <Plataforma>Multiplataforma</Plataforma>
-    <Ano>2011</Ano>
-    <Desarrollador>Mojang</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Final Fantasy VII</Titulo>
-    <Genero>RPG</Genero>
-    <Plataforma>PlayStation</Plataforma>
-    <Ano>1997</Ano>
-    <Desarrollador>N/A</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Dark Souls</Titulo>
-    <Genero>Accion-RPG</Genero>
-    <Plataforma>Multiplataforma</Plataforma>
-    <Ano>2011</Ano>
-    <Desarrollador>FromSoftware</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Red Dead Redemption 2</Titulo>
-    <Genero>Accion-Aventura</Genero>
-    <Plataforma>N/A</Plataforma>
-    <Ano>2018</Ano>
-    <Desarrollador>Rockstar Games</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Cyberpunk 2077</Titulo>
-    <Genero>RPG</Genero>
-    <Plataforma>Multiplataforma</Plataforma>
-    <Ano>2020</Ano>
-    <Desarrollador>N/A</Desarrollador>
-  </Record>
-  <Record>
-    <Titulo>Tetris</Titulo>
-    <Genero>Puzzle</Genero>
-    <Plataforma>Multiplataforma</Plataforma>
-    <Ano>1984</Ano>
-    <Desarrollador>Aleksei Pazhitnov</Desarrollador>
-  </Record>
-</Records>
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <videojuegos>
+        <videojuegos_0>
+            <plataformas>Nintendo Switch</plataformas>
+            <plataformas>Wii U</plataformas>
+            <fecha_lanzamiento>2017-03-03</fecha_lanzamiento>
+            <genero>Aventura, Acción</genero>
+            <nombre>The Legend of Zelda: Breath of the Wild</nombre>
+        </videojuegos_0>
+        <videojuegos_1>
+            <plataformas>PlayStation 4</plataformas>
+            <plataformas>PC</plataformas>
+            <fecha_lanzamiento>2018-04-20</fecha_lanzamiento>
+            <genero>Acción, Aventura</genero>
+            <nombre>God of War</nombre>
+        </videojuegos_1>
+        <videojuegos_2>
+            <plataformas>PC</plataformas>
+            <plataformas>Xbox One</plataformas>
+            <plataformas>PlayStation 4</plataformas>
+            <plataformas>Nintendo Switch</plataformas>
+            <plataformas>Android</plataformas>
+            <plataformas>iOS</plataformas>
+            <fecha_lanzamiento>2011-11-18</fecha_lanzamiento>
+            <genero>Sandbox, Aventura</genero>
+            <nombre>Minecraft</nombre>
+        </videojuegos_2>
+        <videojuegos_3>
+            <plataformas>PlayStation 4</plataformas>
+            <plataformas>Xbox One</plataformas>
+            <plataformas>PC</plataformas>
+            <fecha_lanzamiento>2018-10-26</fecha_lanzamiento>
+            <genero>Acción, Aventura, Mundo Abierto</genero>
+            <nombre>Red Dead Redemption 2</nombre>
+        </videojuegos_3>
+        <videojuegos_4>
+            <plataformas>PlayStation 4</plataformas>
+            <plataformas>Xbox One</plataformas>
+            <plataformas>PC</plataformas>
+            <plataformas>Nintendo Switch</plataformas>
+            <fecha_lanzamiento>2015-05-19</fecha_lanzamiento>
+            <genero>RPG, Aventura</genero>
+            <nombre>The Witcher 3: Wild Hunt</nombre>
+        </videojuegos_4>
+    </videojuegos>
+</root>
