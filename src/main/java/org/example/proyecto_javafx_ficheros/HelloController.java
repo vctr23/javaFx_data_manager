@@ -1,13 +1,23 @@
 package org.example.proyecto_javafx_ficheros;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+
+import java.io.File;  // Import the File class
+import java.io.IOException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +34,7 @@ public class HelloController implements Initializable {
 
     @FXML
     void getDocument(MouseEvent event) {
+        //Funcion que lee y muestra el documento seleccionado
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             Scanner sc = new Scanner(file);
@@ -34,6 +45,25 @@ public class HelloController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void mostrarPopUp(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popup.fxml"));
+            Parent root = loader.load();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Ventana Emergente");
+
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+            popupStage.showAndWait(); // Bloquea la ventana principal hasta que se cierre el pop-up
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
