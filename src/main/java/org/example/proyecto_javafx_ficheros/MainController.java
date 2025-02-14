@@ -6,7 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,7 +18,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -100,5 +104,81 @@ public class MainController implements Initializable {
         stage.show();
 
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+    }
+
+    public void getBDD_info() throws SQLException, IOException {
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        if (file != null && file.getName().endsWith(".db") || file.getName().endsWith(".sql")) {
+            // Obtener URL de conexión según el tipo de base de datos
+            String dbUrl = getDatabaseUrl(file);
+
+            if (dbUrl == null) {
+                showError("Tipo de base de datos no reconocido.");
+                return;
+            }
+
+            // Obtener credenciales si no es SQLite
+            String username = "";
+            String password = "";
+            if (!dbUrl.startsWith("jdbc:sqlite")) {
+                TextInputDialog userDialog = new TextInputDialog();
+                userDialog.setTitle("Credenciales");
+                userDialog.setHeaderText("Ingrese usuario y contraseña (si aplica)");
+                userDialog.setContentText("Usuario:");
+
+                username = userDialog.showAndWait().orElse("");
+
+                TextInputDialog passDialog = new TextInputDialog();
+                passDialog.setTitle("Credenciales");
+                passDialog.setHeaderText("Ingrese contraseña:");
+                passDialog.setContentText("Contraseña:");
+
+                password = passDialog.showAndWait().orElse("");
+            }
+
+            // Conectar a la base de datos
+            try (Connection con = DriverManager.getConnection(dbUrl, username, password);
+                 Statement stmt = con.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT * FROM juegos")) {
+
+                // Mostrar los datos
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + " - " +
+                            rs.getString("nombre") + " - " +
+                            rs.getFloat("precio") + " USD");
+                }
+            } catch (SQLException e) {
+                showError("Error de conexión: " + e.getMessage());
+            }
+        } else {
+            showError("Seleccione un archivo de base de datos válido (.db, .sql).");
+        }
+    }
+
+    /**
+     * Detecta el tipo de base de datos y devuelve la URL de conexión
+     */
+    private String getDatabaseUrl(File file) throws IOException {
+        String fileName = file.getName().toLowerCase();
+        String filePath = file.getCanonicalPath();
+
+        if (fileName.endsWith(".db")) {
+            return "jdbc:sqlite:" + filePath;
+        } else if (fileName.endsWith(".sql")) {
+            return "jdbc:mysql://localhost:3306/" + fileName.replace(".sql", ""); // Requiere configuración de MySQL
+        }
+        return null; // Desconocido
+    }
+
+    /**
+     * Muestra un mensaje de error
+     */
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Ocurrió un problema");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
