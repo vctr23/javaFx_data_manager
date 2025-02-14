@@ -15,6 +15,14 @@
     -fx-background-color: #783980;
 }
 
+/*Donde ya estas*/
+#selected {
+    -fx-background-color: gray;
+}
+.grid-pane {
+    -fx-background-color: lightgray;
+}}
+
 /* Botones en la barra lateral */
 .button {
     -fx-background-color: #333333;
