@@ -1,20 +1,42 @@
-.separator {
-    -fx-border-color: null;
+/* Fondo principal (contenedor derecho) */
+
+.sidebar{
+    -fx-background-color:  #121212;
+    -fx-border-color:  #333333;
+    -fx-border-width: 0 2px 0 0;
 }
 
+#fondo{
+    -fx-background-color:  #121212;
+}
+
+/* Barra lateral (contenedor izquierdo) */
+.vbox:first-child {
+    -fx-background-color: #783980;
+}
+
+/* Botones en la barra lateral */
 .button {
-    -fx-background-color: black;
+    -fx-background-color: #333333;
     -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
 }
 
-#selected {
-    -fx-background-color: gray;
+/* Efecto hover en los botones */
+.button:hover {
+    -fx-background-color: #444444;
 }
 
-.grid-pane {
-    -fx-background-color: lightgray;
-}}
+/* Texto principal */
+.text {
+    -fx-fill: white;
+    -fx-font-size: 14px;
+}
 
-.hbox{
-   -fx-background-color: gray;
+/* Imagen en la barra lateral */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
 }

@@ -45,7 +45,7 @@ public class MainController implements Initializable {
     @FXML
     void showPopUp(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("popup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
             Parent root = loader.load();
 
             Stage popupStage = new Stage();
