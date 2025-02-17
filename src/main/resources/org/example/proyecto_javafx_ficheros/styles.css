@@ -48,3 +48,8 @@
 .image-view {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
 }
+
+.table-view .table-cell {
+    -fx-background-color: black;
+    -fx-text-fill: black;
+}

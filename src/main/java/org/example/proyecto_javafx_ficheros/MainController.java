@@ -1,14 +1,15 @@
 package org.example.proyecto_javafx_ficheros;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +33,9 @@ public class MainController implements Initializable {
 
     @FXML
     private TextArea textArea;
+
+    @FXML
+    private TableView tableView;
 
     @FXML
     void getDocument(MouseEvent event) {
@@ -142,12 +146,29 @@ public class MainController implements Initializable {
                  Statement stmt = con.createStatement();
                  ResultSet rs = stmt.executeQuery("SELECT * FROM juegos")) {
 
-                // Mostrar los datos
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + " - " +
-                            rs.getString("nombre") + " - " +
-                            rs.getFloat("precio") + " USD");
+                // Mostrar resultados en TableView
+                ResultSetMetaData metaData = rs.getMetaData();
+                int columnCount = metaData.getColumnCount();
+
+                tableView.getColumns().clear();
+                ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+
+                for (int i = 1; i <= columnCount; i++) {
+                    final int colIndex = i - 1;
+                    TableColumn<ObservableList<String>, String> column = new TableColumn<>(metaData.getColumnName(i));
+                    column.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().get(colIndex)));
+                    tableView.getColumns().add(column);
                 }
+
+                while (rs.next()) {
+                    ObservableList<String> row = FXCollections.observableArrayList();
+                    for (int i = 1; i <= columnCount; i++) {
+                        row.add(rs.getString(i));
+                    }
+                    data.add(row);
+                }
+
+                tableView.setItems(data);
             } catch (SQLException e) {
                 showError("Error de conexión: " + e.getMessage());
             }
