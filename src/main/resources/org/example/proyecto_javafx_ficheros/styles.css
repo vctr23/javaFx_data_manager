@@ -22,15 +22,14 @@
 .grid-pane {
     -fx-background-color: lightgray;
 }}
-
 /* Botones en la barra lateral */
 .button {
     -fx-background-color: #333333;
-    -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-background-radius: 5px;
     -fx-padding: 10px;
     -fx-alignment: center;
+    -fx-text-fill: white; /* Texto en blanco por defecto */
 }
 
 /* Efecto hover en los botones */

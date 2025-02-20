@@ -3,6 +3,7 @@ package org.example.proyecto_javafx_ficheros;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -192,14 +193,25 @@ public class MainController implements Initializable {
         return null; // Desconocido
     }
 
-    /**
-     * Muestra un mensaje de error
-     */
+    //Muestra un mensaje de error
+
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Ocurrió un problema");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void buscarPikachu(ActionEvent actionEvent) {
+    }
+
+    public void buscarSquirtle(ActionEvent actionEvent) {
+    }
+
+    public void buscarBulbasur(ActionEvent actionEvent) {
+    }
+
+    public void buscarMewtwo(ActionEvent actionEvent) {
     }
 }
