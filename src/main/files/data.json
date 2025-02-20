@@ -1,0 +1,56 @@
+{
+  "videojuegos": [
+    {
+      "nombre": "The Legend of Zelda: Breath of the Wild",
+      "genero": "Aventura, Acción",
+      "plataformas": [
+        "Nintendo Switch",
+        "Wii U"
+      ],
+      "fecha_lanzamiento": "2017-03-03"
+    },
+    {
+      "nombre": "God of War",
+      "genero": "Acción, Aventura",
+      "plataformas": [
+        "PlayStation 4",
+        "PC"
+      ],
+      "fecha_lanzamiento": "2018-04-20"
+    },
+    {
+      "nombre": "Minecraft",
+      "genero": "Sandbox, Aventura",
+      "plataformas": [
+        "PC",
+        "Xbox One",
+        "PlayStation 4",
+        "Nintendo Switch",
+        "Android",
+        "iOS"
+      ],
+      "fecha_lanzamiento": "2011-11-18"
+    },
+    {
+      "nombre": "Red Dead Redemption 2",
+      "genero": "Acción, Aventura, Mundo Abierto",
+      "plataformas": [
+        "PlayStation 4",
+        "Xbox One",
+        "PC"
+      ],
+      "fecha_lanzamiento": "2018-10-26"
+    },
+    {
+      "nombre": "The Witcher 3: Wild Hunt",
+      "genero": "RPG, Aventura",
+      "plataformas": [
+        "PlayStation 4",
+        "Xbox One",
+        "PC",
+        "Nintendo Switch"
+      ],
+      "fecha_lanzamiento": "2015-05-19"
+    }
+  ]
+}

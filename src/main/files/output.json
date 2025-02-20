@@ -1,0 +1,170 @@
+[
+  {
+    "Ano": "1986",
+    "Desarrollador": "Nintendo",
+    "Plataforma": "Nintendo",
+    "Genero": "Aventura",
+    "Titulo": "The Legend of Zelda"
+  },
+  {
+    "Ano": "1985",
+    "Desarrollador": "Nintendo",
+    "Plataforma": "Nintendo",
+    "Genero": "Plataformas",
+    "Titulo": "Super Mario Bros"
+  },
+  {
+    "Ano": "2001",
+    "Desarrollador": "Bungie",
+    "Plataforma": "Xbox",
+    "Genero": "Disparos",
+    "Titulo": "Halo: Combat Evolved"
+  },
+  {
+    "Ano": "2015",
+    "Desarrollador": "CD Projekt Red",
+    "Plataforma": "PC",
+    "Genero": "RPG",
+    "Titulo": "The Witcher 3"
+  },
+  {
+    "Ano": "2011",
+    "Desarrollador": "Mojang",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Sandbox",
+    "Titulo": "Minecraft"
+  },
+  {
+    "Ano": "1997",
+    "Desarrollador": "Square Enix",
+    "Plataforma": "PlayStation",
+    "Genero": "RPG",
+    "Titulo": "Final Fantasy VII"
+  },
+  {
+    "Ano": "2011",
+    "Desarrollador": "FromSoftware",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Accion-RPG",
+    "Titulo": "Dark Souls"
+  },
+  {
+    "Ano": "2018",
+    "Desarrollador": "Rockstar Games",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Accion-Aventura",
+    "Titulo": "Red Dead Redemption 2"
+  },
+  {
+    "Ano": "2020",
+    "Desarrollador": "CD Projekt Red",
+    "Plataforma": "Multiplataforma",
+    "Genero": "RPG",
+    "Titulo": "Cyberpunk 2077"
+  },
+  {
+    "Ano": "1984",
+    "Desarrollador": "Aleksei Pazhitnov",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Puzzle",
+    "Titulo": "Tetris"
+  },
+  {
+    "Ano": "2018",
+    "Desarrollador": "Santa Monica Studio",
+    "Plataforma": "PlayStation",
+    "Genero": "Accion-Aventura",
+    "Titulo": "God of War"
+  },
+  {
+    "Ano": "1991",
+    "Desarrollador": "Capcom",
+    "Plataforma": "Arcade",
+    "Genero": "Peleas",
+    "Titulo": "Street Fighter II"
+  },
+  {
+    "Ano": "2021",
+    "Desarrollador": "EA Sports",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Deportes",
+    "Titulo": "FIFA 22"
+  },
+  {
+    "Ano": "1993",
+    "Desarrollador": "id Software",
+    "Plataforma": "PC",
+    "Genero": "Disparos",
+    "Titulo": "Doom"
+  },
+  {
+    "Ano": "2005",
+    "Desarrollador": "Capcom",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Survival Horror",
+    "Titulo": "Resident Evil 4"
+  },
+  {
+    "Ano": "2011",
+    "Desarrollador": "Bethesda",
+    "Plataforma": "Multiplataforma",
+    "Genero": "RPG",
+    "Titulo": "The Elder Scrolls V: Skyrim"
+  },
+  {
+    "Ano": "2013",
+    "Desarrollador": "Rockstar Games",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Accion",
+    "Titulo": "Grand Theft Auto V"
+  },
+  {
+    "Ano": "2013",
+    "Desarrollador": "Naughty Dog",
+    "Plataforma": "PlayStation",
+    "Genero": "Accion-Aventura",
+    "Titulo": "The Last of Us"
+  },
+  {
+    "Ano": "2020",
+    "Desarrollador": "Ubisoft",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Aventura",
+    "Titulo": "Assassin's Creed Valhalla"
+  },
+  {
+    "Ano": "2017",
+    "Desarrollador": "Epic Games",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Battle Royale",
+    "Titulo": "Fortnite"
+  },
+  {
+    "Ano": "2016",
+    "Desarrollador": "Blizzard Entertainment",
+    "Plataforma": "Multiplataforma",
+    "Genero": "Disparos",
+    "Titulo": "Overwatch"
+  },
+  {
+    "Ano": "1998",
+    "Desarrollador": "Konami",
+    "Plataforma": "PlayStation",
+    "Genero": "Accion sigilo",
+    "Titulo": "Metal Gear Solid"
+  },
+  {
+    "Ano": "1998",
+    "Desarrollador": "Valve",
+    "Plataforma": "PC",
+    "Genero": "Disparos",
+    "Titulo": "Half-Life"
+  },
+  {
+    "Ano": "2009",
+    "Desarrollador": "Riot Games",
+    "Plataforma": "PC",
+    "Genero": "MOBA",
+    "Titulo": "League of Legends"
+  }
+]
