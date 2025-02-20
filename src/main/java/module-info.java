@@ -1,6 +1,7 @@
 module org.example.proyecto_javafx_ficheros {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.xml;
     requires java.sql;
     requires org.json;
 

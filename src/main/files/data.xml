@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videojuegos>
+    <videojuego>
+        <nombre>The Legend of Zelda: Breath of the Wild</nombre>
+        <genero>Aventura, Acción</genero>
+        <desarrollador>Nintendo</desarrollador>
+        <fecha_lanzamiento>2017-03-03</fecha_lanzamiento>
+        <plataformas>
+            <plataforma>Nintendo Switch</plataforma>
+            <plataforma>Wii U</plataforma>
+        </plataformas>
+        <descripcion>
+            Un juego de mundo abierto donde el jugador controla a Link en una misión para salvar el reino de Hyrule.
+        </descripcion>
+    </videojuego>
+    <videojuego>
+        <nombre>God of War</nombre>
+        <genero>Acción, Aventura</genero>
+        <desarrollador>Sony Santa Monica</desarrollador>
+        <fecha_lanzamiento>2018-04-20</fecha_lanzamiento>
+        <plataformas>
+            <plataforma>PlayStation 4</plataforma>
+            <plataforma>PC</plataforma>
+        </plataformas>
+        <descripcion>
+            Kratos, el dios de la guerra, se embarca en una nueva aventura junto a su hijo Atreus, explorando mitologías nórdicas.
+        </descripcion>
+    </videojuego>
+    <videojuego>
+        <nombre>Cyberpunk 2077</nombre>
+        <genero>Acción, RPG</genero>
+        <desarrollador>CD Projekt Red</desarrollador>
+        <fecha_lanzamiento>2020-12-10</fecha_lanzamiento>
+        <plataformas>
+            <plataforma>PC</plataforma>
+            <plataforma>PlayStation 4</plataforma>
+            <plataforma>Xbox One</plataforma>
+        </plataformas>
+        <descripcion>
+            Un juego de rol ambientado en una ciudad futurista, donde el jugador asume el papel de V, un mercenario en busca de poder y control.
+        </descripcion>
+    </videojuego>
+</videojuegos>

@@ -1,0 +1,36 @@
+{"videojuegos": {"videojuego": [
+    {
+        "descripcion": "Un juego de mundo abierto donde el jugador controla a Link en una misión para salvar el reino de Hyrule.",
+        "desarrollador": "Nintendo",
+        "plataformas": {"plataforma": [
+            "Nintendo Switch",
+            "Wii U"
+        ]},
+        "fecha_lanzamiento": "2017-03-03",
+        "genero": "Aventura, Acción",
+        "nombre": "The Legend of Zelda: Breath of the Wild"
+    },
+    {
+        "descripcion": "Kratos, el dios de la guerra, se embarca en una nueva aventura junto a su hijo Atreus, explorando mitologías nórdicas.",
+        "desarrollador": "Sony Santa Monica",
+        "plataformas": {"plataforma": [
+            "PlayStation 4",
+            "PC"
+        ]},
+        "fecha_lanzamiento": "2018-04-20",
+        "genero": "Acción, Aventura",
+        "nombre": "God of War"
+    },
+    {
+        "descripcion": "Un juego de rol ambientado en una ciudad futurista, donde el jugador asume el papel de V, un mercenario en busca de poder y control.",
+        "desarrollador": "CD Projekt Red",
+        "plataformas": {"plataforma": [
+            "PC",
+            "PlayStation 4",
+            "Xbox One"
+        ]},
+        "fecha_lanzamiento": "2020-12-10",
+        "genero": "Acción, RPG",
+        "nombre": "Cyberpunk 2077"
+    }
+]}}
