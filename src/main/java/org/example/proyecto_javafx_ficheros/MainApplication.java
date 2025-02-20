@@ -3,16 +3,19 @@ package org.example.proyecto_javafx_ficheros;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        stage.setTitle("Hello!");
+        stage.setTitle("JavaFx Data manager");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/JavaFx_icon.png"))));
         stage.setScene(scene);
         stage.show();
     }
