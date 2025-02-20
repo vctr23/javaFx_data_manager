@@ -42,6 +42,7 @@ public class MainController implements Initializable {
         File file = fileChooser.showOpenDialog(new Stage());
         try {
             Scanner sc = new Scanner(file);
+            textArea.clear();
             while (sc.hasNextLine()) {
                 textArea.appendText(sc.nextLine() + "\n");
             }
@@ -187,7 +188,7 @@ public class MainController implements Initializable {
         if (fileName.endsWith(".db")) {
             return "jdbc:sqlite:" + filePath;
         } else if (fileName.endsWith(".sql")) {
-            return "jdbc:mysql://localhost:3306/" + fileName.replace(".sql", ""); // Requiere configuración de MySQL
+            return "jdbc:mysql://localhost:3306/" + fileName.replace(".sql", ""); // Requires MySQL configuration
         }
         return null; // Desconocido
     }

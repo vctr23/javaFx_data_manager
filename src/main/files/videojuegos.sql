@@ -1,0 +1,5 @@
+INSERT INTO juegos (id, nombre, precio, descripcion, plataforma) VALUES (1, 'The Legend of Zelda: Breath of the Wild', 59.99, 'Un juego de mundo abierto con exploración y aventuras épicas.', 'Nintendo Switch');
+INSERT INTO juegos (id, nombre, precio, descripcion, plataforma) VALUES (2, 'Minecraft', 29.99, 'Un juego de construcción y supervivencia en un mundo de bloques.', 'PC, PlayStation, Xbox, Switch, Móvil');
+INSERT INTO juegos (id, nombre, precio, descripcion, plataforma) VALUES (3, 'God of War', 49.99, 'Kratos y su hijo Atreus se embarcan en una aventura nórdica llena de acción.', 'PlayStation 4');
+INSERT INTO juegos (id, nombre, precio, descripcion, plataforma) VALUES (4, 'Elden Ring', 59.99, 'Un desafiante RPG de mundo abierto con una historia de George R. R. Martin.', 'PlayStation 5, Xbox Series X, PC');
+INSERT INTO juegos (id, nombre, precio, descripcion, plataforma) VALUES (5, 'Cyberpunk 2077', 39.99, 'Un RPG futurista en Night City con un mundo inmersivo y personalización profunda.', 'PC, PlayStation 5, Xbox Series X');
