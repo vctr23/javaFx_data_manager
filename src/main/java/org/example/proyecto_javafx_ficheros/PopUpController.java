@@ -9,7 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -18,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PopUpController implements Initializable {
+    private File selectedFile;
 
     @FXML
     private Button btnCerrar;
@@ -44,7 +44,14 @@ public class PopUpController implements Initializable {
         String nombreArchivo = textFiledNombreArchivo.getText();
         try {
             //Aqui se llamara a otro metodo dependiendo del archivo a importar
-            File myObj = new File(nombreArchivo + ".txt");
+            if (selectedFile.getName().endsWith(".csv") && comboBox.getValue().equals("csv")) {
+                mostrarAlertaExportFileType();
+            } else if (selectedFile.getName().endsWith(".xml") && comboBox.getValue().equals("xml")) {
+                mostrarAlertaExportFileType();
+            } else if (selectedFile.getName().endsWith(".json") && comboBox.getValue().equals("json")) {
+                mostrarAlertaExportFileType();
+            }
+            File myObj = new File(nombreArchivo + "." + comboBox.getValue());
             if (myObj.createNewFile()) {
                 System.out.println("Archivo creado: " + myObj.getName());
                 cerrarPopUp(actionEvent);
@@ -57,6 +64,10 @@ public class PopUpController implements Initializable {
         }
     }
 
+    public void setArchivoSeleccionado(File file) {
+        this.selectedFile = file;
+    }
+
     private void mostrarAlerta() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -64,6 +75,19 @@ public class PopUpController implements Initializable {
         alert.setContentText("Ya hay un archivo con ese nombre");
 
         alert.showAndWait();
+    }
+
+    private void mostrarAlertaExportFileType() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Elije otra opción");
+        alert.setContentText("El archivo importado ya es de este tipo");
+
+        alert.showAndWait();
+    }
+
+    public void getComboBoxValue() {
+        System.out.println(comboBox.getValue());
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {

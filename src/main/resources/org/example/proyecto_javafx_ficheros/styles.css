@@ -1,13 +1,13 @@
 /* Fondo principal (contenedor derecho) */
 
-.sidebar{
-    -fx-background-color:  #121212;
-    -fx-border-color:  #333333;
+.sidebar {
+    -fx-background-color: #121212;
+    -fx-border-color: #333333;
     -fx-border-width: 0 2px 0 0;
 }
 
-#fondo{
-    -fx-background-color:  #121212;
+#fondo {
+    -fx-background-color: #121212;
 }
 
 /* Barra lateral (contenedor izquierdo) */
@@ -19,9 +19,12 @@
 #selected {
     -fx-background-color: gray;
 }
+
 .grid-pane {
     -fx-background-color: lightgray;
-}}
+}
+
+}
 /* Botones en la barra lateral */
 .button {
     -fx-background-color: #333333;
@@ -48,15 +51,17 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 0, 0);
 }
 
+/* Tabla en DB view*/
 .table-view .table-cell {
     -fx-background-color: black;
     -fx-text-fill: black;
 }
 
-.combo-box .list-cell {
-    -fx-text-fill: white;
+/* Texto en el combobox de PopUp */
+.combo-box .text {
+    -fx-fill: white;
 }
 
-.combo-box .text {
+.combo-box .list-cell {
     -fx-text-fill: white;
 }

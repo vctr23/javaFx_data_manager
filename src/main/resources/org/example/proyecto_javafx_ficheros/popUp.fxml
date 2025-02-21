@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.PopUpController" stylesheets="styles.css">
+<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.PopUpController" stylesheets="@styles.css">
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
@@ -12,7 +12,7 @@
         <Label style="-fx-text-fill: white;" text="Filename:" />
         <TextField fx:id="textFiledNombreArchivo" style="-fx-background-color: #3c3f41; -fx-text-fill: white; -fx-control-inner-background: #3c3f41;" />
       <Label style="-fx-text-fill: white;" text="Filetype to export to:" />
-      <ComboBox fx:id="comboBox" prefWidth="150.0" style="-fx-background-color: #3c3f41; -fx-control-inner-background: #3c3f41; " />
+      <ComboBox fx:id="comboBox" prefWidth="150.0" style="-fx-background-color: #3c3f41; -fx-control-inner-background: #3c3f41;" />
         <HBox alignment="CENTER" spacing="10.0">
             <children>
                 <Button fx:id="btnGuardar" onAction="#createDocument" style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-cursor: hand;" text="Aceptar">

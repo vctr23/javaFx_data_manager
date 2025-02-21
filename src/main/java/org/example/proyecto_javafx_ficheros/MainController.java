@@ -21,7 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.net.http.HttpClient;
@@ -33,6 +32,7 @@ import java.util.Scanner;
 
 public class MainController implements Initializable {
     FileChooser fileChooser = new FileChooser();
+    File file;
 
     @FXML
     public TextArea textAreaExport;
@@ -47,16 +47,20 @@ public class MainController implements Initializable {
     private TableView tableView;
 
     @FXML
-    void getDocument(MouseEvent event) {
-        File file = fileChooser.showOpenDialog(new Stage());
-        try {
-            Scanner sc = new Scanner(file);
-            textArea.clear();
-            while (sc.hasNextLine()) {
-                textArea.appendText(sc.nextLine() + "\n");
+    public void getDocument(MouseEvent event) {
+        file = fileChooser.showOpenDialog(new Stage());
+        if (file != null){
+            String fileType = getFileType(file);
+            System.out.println("The selected file type is: " + fileType);
+            try {
+                Scanner sc = new Scanner(file);
+                textArea.clear();
+                while (sc.hasNextLine()) {
+                    textArea.appendText(sc.nextLine() + "\n");
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -65,6 +69,9 @@ public class MainController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
             Parent root = loader.load();
+
+            PopUpController popUpController = loader.getController();
+            popUpController.setArchivoSeleccionado(file);
 
             Stage popupStage = new Stage();
             popupStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
@@ -376,6 +383,21 @@ public class MainController implements Initializable {
                     "Ataque: " + ataque + "\n" +
                     "Defensa: " + defensa);
 
+        }
+    }
+
+    public static String getFileType(File file) {
+        String fileName = file.getName().toLowerCase();
+        if (fileName.endsWith(".json")) {
+            return "JSON";
+        } else if (fileName.endsWith(".xml")) {
+            return "XML";
+        } else if (fileName.endsWith(".csv")) {
+            return "CSV";
+        } else if (fileName.endsWith(".txt")) {
+            return "Text";
+        } else {
+            return "Unknown";
         }
     }
 }
