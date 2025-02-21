@@ -13,6 +13,7 @@ target/
 .idea/libraries/
 *.iws
 *.iml
+src/main/java/outputsFiles/*
 *.ipr
 
 ### Eclipse ###

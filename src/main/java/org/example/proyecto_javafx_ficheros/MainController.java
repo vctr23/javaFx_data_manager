@@ -36,6 +36,8 @@ public class MainController implements Initializable {
 
     @FXML
     public TextArea textAreaExport;
+    //Este valor ↓↓↓ lo uso en el comboBox de PopUpController
+    public static String fileType = "";
 
     @FXML
     private ImageView icon;
@@ -46,11 +48,12 @@ public class MainController implements Initializable {
     @FXML
     private TableView tableView;
 
+
     @FXML
     public void getDocument(MouseEvent event) {
         file = fileChooser.showOpenDialog(new Stage());
-        if (file != null){
-            String fileType = getFileType(file);
+        if (file != null) {
+            fileType = getFileType(file);
             System.out.println("The selected file type is: " + fileType);
             try {
                 Scanner sc = new Scanner(file);

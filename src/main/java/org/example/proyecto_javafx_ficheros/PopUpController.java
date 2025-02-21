@@ -1,5 +1,7 @@
 package org.example.proyecto_javafx_ficheros;
 
+import file_exporters.XmlToCsvConverter;
+import file_exporters.XmlToJsonConverter;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -9,12 +11,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static org.example.proyecto_javafx_ficheros.MainController.fileType;
 
 public class PopUpController implements Initializable {
     private File selectedFile;
@@ -43,20 +50,38 @@ public class PopUpController implements Initializable {
         Stage stage = (Stage) btnGuardar.getScene().getWindow();
         String nombreArchivo = textFiledNombreArchivo.getText();
         try {
-            //Aqui se llamara a otro metodo dependiendo del archivo a importar
+            //Aqui se comprueba que no se exporte a un archivo que ya es el formato
             if (selectedFile.getName().endsWith(".csv") && comboBox.getValue().equals("csv")) {
                 mostrarAlertaExportFileType();
             } else if (selectedFile.getName().endsWith(".xml") && comboBox.getValue().equals("xml")) {
                 mostrarAlertaExportFileType();
             } else if (selectedFile.getName().endsWith(".json") && comboBox.getValue().equals("json")) {
                 mostrarAlertaExportFileType();
-            }
-            File myObj = new File(nombreArchivo + "." + comboBox.getValue());
-            if (myObj.createNewFile()) {
-                System.out.println("Archivo creado: " + myObj.getName());
-                cerrarPopUp(actionEvent);
             } else {
-                mostrarAlerta();
+                //Poner aqui el selectedFile.getName().endsWith()
+                switch (comboBox.getValue()) {
+                    case "json" -> {
+                        if (selectedFile.getName().endsWith(".xml")) {
+
+                        }
+                    }
+                    case "xml" -> {
+                        if (selectedFile.getName().endsWith(".json")) {
+
+                        }
+                    }
+                    case "csv" -> {
+                        if (selectedFile.getName().endsWith(".csv")) {
+
+                        }
+                    }
+                    default -> System.out.println("Error en el case");
+                }
+                File myObj = new File("src/main/java/outputsFiles/" + nombreArchivo + "." + comboBox.getValue());
+                if (myObj.createNewFile()) {
+                    System.out.println("Archivo creado: " + myObj.getName());
+                    cerrarPopUp(actionEvent);
+                }
             }
         } catch (IOException e) {
             System.out.println("Ha ocurrido un error.");
@@ -91,6 +116,13 @@ public class PopUpController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboBox.setItems(FXCollections.observableArrayList("csv", "xml", "json"));
+        System.out.println("El archivo en el comboBox leido es: " + fileType);
+        if (fileType.toLowerCase().equals("csv")) {
+            comboBox.setItems(FXCollections.observableArrayList("xml", "json"));
+        } else if (fileType.toLowerCase().equals("xml")) {
+            comboBox.setItems(FXCollections.observableArrayList("csv", "json"));
+        } else {
+            comboBox.setItems(FXCollections.observableArrayList("csv", "xml"));
+        }
     }
 }

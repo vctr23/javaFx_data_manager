@@ -14,7 +14,7 @@ import java.util.*;
 public class XmlToCsvConverter {
     public static void main(String[] args) {
         String xmlFile = "src//main//files//data.xml";  // Ruta del archivo XML
-        String csvFile = "src//main//files//outputXML.csv";  // Ruta de salida para el archivo CSV
+        String csvFile = "src//main//java//outputsFiles//outputXML.csv";  // Ruta de salida para el archivo CSV
         convertXmlToCsv(xmlFile, csvFile);
     }
 
