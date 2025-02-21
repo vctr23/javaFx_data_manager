@@ -17,37 +17,37 @@
                 <Image url="@../../../images/JavaFx_Data_Manager-icon.png" />
             </ImageView>
         </AnchorPane>
-        <Button mnemonicParsing="false" onMouseClicked="#changeToFileView" prefHeight="30.0" prefWidth="160.0" text="Files" style="-fx-text-fill: white;">
+        <Button mnemonicParsing="false" onMouseClicked="#changeToFileView" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="Files">
             <VBox.margin>
                 <Insets bottom="50.0" left="20.0" right="20.0" top="50.0" />
             </VBox.margin>
         </Button>
-        <Button id="selected" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="API" style="-fx-text-fill: white;">
+        <Button id="selected" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="API">
             <VBox.margin>
                 <Insets bottom="50.0" left="20.0" right="20.0" />
             </VBox.margin>
         </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#changeToDBView" prefHeight="30.0" prefWidth="160.0" text="DB" style="-fx-text-fill: white;">
+        <Button mnemonicParsing="false" onMouseClicked="#changeToDBView" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="DB">
             <VBox.margin>
                 <Insets left="20.0" right="20.0" />
             </VBox.margin>
         </Button>
     </VBox>
     <VBox prefHeight="400.0" prefWidth="300.0">
-        <Separator maxHeight="60.0" opacity="0.0" orientation="VERTICAL" prefHeight="10.0" VBox.vgrow="ALWAYS" />
+        <Separator maxHeight="78.0" opacity="0.0" orientation="VERTICAL" prefHeight="10.0" VBox.vgrow="ALWAYS" />
         <Button fx:id="pikachuButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarPikachu" prefWidth="250.0" style="-fx-background-color: #f4d77c; -fx-text-fill: black;" text="Pikachu" textAlignment="CENTER" VBox.vgrow="ALWAYS">
             <VBox.margin>
                 <Insets left="30.0" right="30.0" />
             </VBox.margin>
         </Button>
-        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="68.0" />
+        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" />
         <Button fx:id="squirtleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarSquirtle" prefWidth="250.0" style="-fx-background-color: #83cee8; -fx-text-fill: black;" text="Squirtle" VBox.vgrow="ALWAYS">
             <VBox.margin>
                 <Insets left="30.0" right="30.0" />
             </VBox.margin>
         </Button>
         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" />
-        <Button fx:id="bulbasurButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarBulbasur" prefWidth="250.0" style="-fx-background-color: #83cbb1; -fx-text-fill: black;" text="Bulbasur" VBox.vgrow="ALWAYS">
+        <Button fx:id="bulbasurButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarBulbasur" prefWidth="250.0" style="-fx-background-color: #83cbb1; -fx-text-fill: black;" text="Bulbasaur" VBox.vgrow="ALWAYS">
             <VBox.margin>
                 <Insets left="30.0" right="30.0" />
             </VBox.margin>
@@ -63,12 +63,12 @@
         </HBox.margin>
     </VBox>
     <VBox prefHeight="400.0" prefWidth="300.0">
-        <Button mnemonicParsing="false" onMouseClicked="#showPopUp" prefHeight="30.0" prefWidth="90.0" text="Export to..." style="-fx-text-fill: white;">
+        <Button mnemonicParsing="false" onMouseClicked="#showPopUp" prefHeight="30.0" prefWidth="90.0" style="-fx-text-fill: white;" text="Export to...">
             <VBox.margin>
                 <Insets bottom="10.0" left="100.0" top="10.0" />
             </VBox.margin>
         </Button>
-        <TextArea prefHeight="438.0" prefWidth="340.0">
+        <TextArea fx:id="textAreaExport" prefHeight="438.0" prefWidth="340.0">
             <VBox.margin>
                 <Insets bottom="10.0" left="20.0" right="20.0" />
             </VBox.margin>

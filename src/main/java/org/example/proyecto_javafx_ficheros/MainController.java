@@ -17,16 +17,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class MainController implements Initializable {
+    public TextArea textAreaExport;
     FileChooser fileChooser = new FileChooser();
 
     @FXML
@@ -204,15 +210,170 @@ public class MainController implements Initializable {
         alert.showAndWait();
     }
 
-    public void buscarPikachu(ActionEvent actionEvent) {
+
+    public void buscarPikachu() throws IOException {
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/pikachu"))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = null;
+        try {
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (response != null) {
+            // Convertimos la respuesta en un objeto JSON
+            JSONObject jsonResponse = new JSONObject(response.body());
+
+            // Extraemos el nombre
+            String nombre = jsonResponse.getString("name");
+
+            // Extraemos el primer juego en el que apareció
+            JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
+            String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+
+            // Extraemos las estadísticas
+            JSONArray stats = jsonResponse.getJSONArray("stats");
+            int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
+            int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
+            int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+
+            // Mostramos los resultados
+            textAreaExport.clear();
+            textAreaExport.appendText("Nombre: " + nombre + "\n" +
+                    "Primer juego: " + primerJuego + "\n" +
+                    "Vida: " + vida + "\n" +
+                    "Ataque: " + ataque + "\n" +
+                    "Defensa: " + defensa);
+
+        }
     }
 
-    public void buscarSquirtle(ActionEvent actionEvent) {
+
+    public void buscarSquirtle(ActionEvent actionEvent) throws IOException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/squirtle"))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = null;
+        try {
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (response != null) {
+            // Convertimos la respuesta en un objeto JSON
+            JSONObject jsonResponse = new JSONObject(response.body());
+
+            // Extraemos el nombre
+            String nombre = jsonResponse.getString("name");
+
+            // Extraemos el primer juego en el que apareció
+            JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
+            String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+
+            // Extraemos las estadísticas
+            JSONArray stats = jsonResponse.getJSONArray("stats");
+            int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
+            int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
+            int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+
+            // Mostramos los resultados
+            textAreaExport.clear();
+            textAreaExport.appendText("Nombre: " + nombre + "\n" +
+                    "Primer juego: " + primerJuego + "\n" +
+                    "Vida: " + vida + "\n" +
+                    "Ataque: " + ataque + "\n" +
+                    "Defensa: " + defensa);
+
+        }
     }
 
     public void buscarBulbasur(ActionEvent actionEvent) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/bulbasaur"))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = null;
+        try {
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (response != null) {
+            // Convertimos la respuesta en un objeto JSON
+            JSONObject jsonResponse = new JSONObject(response.body());
+
+            // Extraemos el nombre
+            String nombre = jsonResponse.getString("name");
+
+            // Extraemos el primer juego en el que apareció
+            JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
+            String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+
+            // Extraemos las estadísticas
+            JSONArray stats = jsonResponse.getJSONArray("stats");
+            int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
+            int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
+            int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+
+            // Mostramos los resultados
+            textAreaExport.clear();
+            textAreaExport.appendText("Nombre: " + nombre + "\n" +
+                    "Primer juego: " + primerJuego + "\n" +
+                    "Vida: " + vida + "\n" +
+                    "Ataque: " + ataque + "\n" +
+                    "Defensa: " + defensa);
+
+        }
     }
 
     public void buscarMewtwo(ActionEvent actionEvent) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/mewtwo"))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = null;
+        try {
+            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (response != null) {
+            // Convertimos la respuesta en un objeto JSON
+            JSONObject jsonResponse = new JSONObject(response.body());
+
+            // Extraemos el nombre
+            String nombre = jsonResponse.getString("name");
+
+            // Extraemos el primer juego en el que apareció
+            JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
+            String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+
+            // Extraemos las estadísticas
+            JSONArray stats = jsonResponse.getJSONArray("stats");
+            int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
+            int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
+            int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+
+            // Mostramos los resultados
+            textAreaExport.clear();
+            textAreaExport.appendText("Nombre: " + nombre + "\n" +
+                    "Primer juego: " + primerJuego + "\n" +
+                    "Vida: " + vida + "\n" +
+                    "Ataque: " + ataque + "\n" +
+                    "Defensa: " + defensa);
+
+        }
     }
 }
