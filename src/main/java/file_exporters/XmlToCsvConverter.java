@@ -1,9 +1,14 @@
-package org.example.proyecto_javafx_ficheros;
+package file_exporters;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.*;
 
 public class XmlToCsvConverter {

@@ -32,8 +32,10 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class MainController implements Initializable {
-    public TextArea textAreaExport;
     FileChooser fileChooser = new FileChooser();
+
+    @FXML
+    public TextArea textAreaExport;
 
     @FXML
     private ImageView icon;

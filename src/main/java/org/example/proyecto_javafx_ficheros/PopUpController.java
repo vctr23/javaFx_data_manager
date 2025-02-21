@@ -1,21 +1,29 @@
 package org.example.proyecto_javafx_ficheros;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PopUpController extends Application {
+public class PopUpController implements Initializable {
 
     @FXML
     private Button btnCerrar;
+
+    @FXML
+    private ComboBox<String> comboBox;
 
     @FXML
     public void cerrarPopUp(ActionEvent actionEvent) {
@@ -58,8 +66,7 @@ public class PopUpController extends Application {
         alert.showAndWait();
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        launch();
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        comboBox.setItems(FXCollections.observableArrayList("csv", "xml", "json"));
     }
 }

@@ -1,9 +1,12 @@
-package org.example.proyecto_javafx_ficheros;
+package file_exporters;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class JsonToXmlConverter {
     public static void main(String[] args) {

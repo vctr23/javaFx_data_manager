@@ -52,3 +52,11 @@
     -fx-background-color: black;
     -fx-text-fill: black;
 }
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+}
+
+.combo-box .text {
+    -fx-text-fill: white;
+}
