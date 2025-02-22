@@ -13,7 +13,6 @@ target/
 .idea/libraries/
 *.iws
 *.iml
-src/main/java/outputsFiles/*
 *.ipr
 
 ### Eclipse ###
@@ -40,3 +39,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+### Archivos creados de prueba ###
+src/main/java/outputsFiles/*
+!src/main/java/outputsFiles/.gitkeep

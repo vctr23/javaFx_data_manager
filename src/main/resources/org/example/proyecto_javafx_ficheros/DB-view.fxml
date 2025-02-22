@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.MainController">
+<HBox id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.MainController">
     <VBox prefHeight="500.0" prefWidth="200.0" styleClass="sidebar">
         <AnchorPane prefHeight="78.0" prefWidth="234.0">
             <ImageView fx:id="icon" fitHeight="206.0" fitWidth="191.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-76.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">

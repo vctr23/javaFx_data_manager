@@ -1,5 +1,7 @@
 package org.example.proyecto_javafx_ficheros;
 
+import file_exporters.CsvToJsonConverter;
+import file_exporters.CsvToXmlConverter;
 import file_exporters.XmlToCsvConverter;
 import file_exporters.XmlToJsonConverter;
 import javafx.application.Application;
@@ -59,20 +61,19 @@ public class PopUpController implements Initializable {
                 mostrarAlertaExportFileType();
             } else {
                 //Poner aqui el selectedFile.getName().endsWith()
-                switch (comboBox.getValue()) {
+                String extension = selectedFile.getName().toLowerCase().substring(selectedFile.getName().toLowerCase().length() - 3);
+                switch (extension) {
                     case "json" -> {
-                        if (selectedFile.getName().endsWith(".xml")) {
-
-                        }
+                        System.out.println("json");
                     }
                     case "xml" -> {
-                        if (selectedFile.getName().endsWith(".json")) {
-
-                        }
+                        System.out.println("XML");
                     }
                     case "csv" -> {
-                        if (selectedFile.getName().endsWith(".csv")) {
-
+                        if (comboBox.getValue().equals("xml")) {
+                            CsvToXmlConverter.convertCsvToXml(selectedFile.getName(), nombreArchivo);
+                        } else {
+                            CsvToJsonConverter.convertCsvToJson(selectedFile.getName(), nombreArchivo);
                         }
                     }
                     default -> System.out.println("Error en el case");
@@ -116,7 +117,6 @@ public class PopUpController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("El archivo en el comboBox leido es: " + fileType);
         if (fileType.toLowerCase().equals("csv")) {
             comboBox.setItems(FXCollections.observableArrayList("xml", "json"));
         } else if (fileType.toLowerCase().equals("xml")) {

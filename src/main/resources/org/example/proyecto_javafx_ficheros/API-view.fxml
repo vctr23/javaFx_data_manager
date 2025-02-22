@@ -1,75 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<HBox id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.proyecto_javafx_ficheros.MainController">
+<HBox id="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="500.0" prefWidth="800.0" stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.proyecto_javafx_ficheros.MainController">
     <VBox prefHeight="500.0" prefWidth="200.0" styleClass="sidebar">
         <AnchorPane prefHeight="78.0" prefWidth="234.0">
-            <ImageView fx:id="icon" fitHeight="206.0" fitWidth="191.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-76.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
-                <Image url="@../../../images/JavaFx_Data_Manager-icon.png" />
+            <ImageView fx:id="icon" fitHeight="206.0" fitWidth="191.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true"
+                       preserveRatio="true" AnchorPane.bottomAnchor="-76.0" AnchorPane.leftAnchor="14.0"
+                       AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="3.0">
+                <Image url="@../../../images/JavaFx_Data_Manager-icon.png"/>
             </ImageView>
         </AnchorPane>
-        <Button mnemonicParsing="false" onMouseClicked="#changeToFileView" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="Files">
+        <Button mnemonicParsing="false" onMouseClicked="#changeToFileView" prefHeight="30.0" prefWidth="160.0"
+                style="-fx-text-fill: white;" text="Files">
             <VBox.margin>
-                <Insets bottom="50.0" left="20.0" right="20.0" top="50.0" />
+                <Insets bottom="50.0" left="20.0" right="20.0" top="50.0"/>
             </VBox.margin>
         </Button>
-        <Button id="selected" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="API">
+        <Button id="selected" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;"
+                text="API">
             <VBox.margin>
-                <Insets bottom="50.0" left="20.0" right="20.0" />
+                <Insets bottom="50.0" left="20.0" right="20.0"/>
             </VBox.margin>
         </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#changeToDBView" prefHeight="30.0" prefWidth="160.0" style="-fx-text-fill: white;" text="DB">
+        <Button mnemonicParsing="false" onMouseClicked="#changeToDBView" prefHeight="30.0" prefWidth="160.0"
+                style="-fx-text-fill: white;" text="DB">
             <VBox.margin>
-                <Insets left="20.0" right="20.0" />
+                <Insets left="20.0" right="20.0"/>
             </VBox.margin>
         </Button>
     </VBox>
     <VBox prefHeight="400.0" prefWidth="300.0">
-        <Separator maxHeight="78.0" opacity="0.0" orientation="VERTICAL" prefHeight="10.0" VBox.vgrow="ALWAYS" />
-        <Button fx:id="pikachuButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarPikachu" prefWidth="250.0" style="-fx-background-color: #f4d77c; -fx-text-fill: black;" text="Pikachu" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+        <Separator maxHeight="78.0" opacity="0.0" orientation="VERTICAL" prefHeight="10.0" VBox.vgrow="ALWAYS"/>
+        <Button id="pikachuBoton" fx:id="pikachuButton" alignment="CENTER" contentDisplay="CENTER"
+                mnemonicParsing="false" onAction="#buscarPikachu" prefWidth="250.0" text="Pikachu"
+                textAlignment="CENTER" VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets left="30.0" right="30.0" />
+                <Insets left="30.0" right="30.0"/>
             </VBox.margin>
         </Button>
-        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" />
-        <Button fx:id="squirtleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarSquirtle" prefWidth="250.0" style="-fx-background-color: #83cee8; -fx-text-fill: black;" text="Squirtle" VBox.vgrow="ALWAYS">
+
+        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0"/>
+        <Button id="squirtleBoton" fx:id="squirtleButton" alignment="CENTER" contentDisplay="CENTER"
+                mnemonicParsing="false" onAction="#buscarSquirtle" prefWidth="250.0" text="Squirtle"
+                VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets left="30.0" right="30.0" />
+                <Insets left="30.0" right="30.0"/>
             </VBox.margin>
         </Button>
-        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" />
-        <Button fx:id="bulbasurButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarBulbasur" prefWidth="250.0" style="-fx-background-color: #83cbb1; -fx-text-fill: black;" text="Bulbasaur" VBox.vgrow="ALWAYS">
+        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0"/>
+        <Button id="bulbasaurBoton" fx:id="bulbasurButton" alignment="CENTER" contentDisplay="CENTER"
+                mnemonicParsing="false" onAction="#buscarBulbasur" prefWidth="250.0" text="Bulbasaur"
+                VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets left="30.0" right="30.0" />
+                <Insets left="30.0" right="30.0"/>
             </VBox.margin>
         </Button>
-        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0" />
-        <Button fx:id="mewtwoButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buscarMewtwo" prefWidth="250.0" style="-fx-background-color: #af89af; -fx-text-fill: black;" text="Mewtwo" VBox.vgrow="ALWAYS">
+        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="50.0"/>
+        <Button id="mewtwoBoton" fx:id="mewtwoButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onAction="#buscarMewtwo" prefWidth="250.0" text="Mewtwo" VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets left="30.0" right="30.0" />
+                <Insets left="30.0" right="30.0"/>
             </VBox.margin>
         </Button>
         <HBox.margin>
-            <Insets />
+            <Insets/>
         </HBox.margin>
     </VBox>
     <VBox prefHeight="400.0" prefWidth="300.0">
-        <Button mnemonicParsing="false" onMouseClicked="#showPopUp" prefHeight="30.0" prefWidth="90.0" style="-fx-text-fill: white;" text="Export to...">
+        <Button mnemonicParsing="false" onMouseClicked="#showPopUp" prefHeight="30.0" prefWidth="90.0"
+                style="-fx-text-fill: white;" text="Export to...">
             <VBox.margin>
-                <Insets bottom="10.0" left="100.0" top="10.0" />
+                <Insets bottom="10.0" left="100.0" top="10.0"/>
             </VBox.margin>
         </Button>
         <TextArea fx:id="textAreaExport" prefHeight="438.0" prefWidth="340.0">
             <VBox.margin>
-                <Insets bottom="10.0" left="20.0" right="20.0" />
+                <Insets bottom="10.0" left="20.0" right="20.0"/>
             </VBox.margin>
         </TextArea>
         <HBox.margin>
-            <Insets />
+            <Insets/>
         </HBox.margin>
     </VBox>
 </HBox>

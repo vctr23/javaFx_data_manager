@@ -25,24 +25,71 @@
 }
 
 }
-/* Botones en la barra lateral */
-.button {
-    -fx-background-color: #333333;
-    -fx-font-size: 12px;
-    -fx-background-radius: 5px;
-    -fx-padding: 10px;
-    -fx-alignment: center;
-    -fx-text-fill: white; /* Texto en blanco por defecto */
+/* Botones en la barra lateral   */
+Button {
+   -fx-cursor: hand;
+   -fx-background-color: #333333;
+   -fx-text-fill: white;
+   -fx-font-size: 14px;
+   -fx-padding: 5px;
+   -fx-border-radius: 3px;
+   -fx-transition: all 0.3s ease-in-out;
 }
 
-/* Efecto hover en los botones */
-.button:hover {
-    -fx-background-color: #444444;
+/*Botones de la API*/
+#pikachuBoton {
+    -fx-background-color: #f4d77c !important;
+    -fx-text-fill: black !important;
 }
 
+#pikachuBoton:hover {
+    -fx-background-color: #d1b869 !important;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#squirtleBoton {
+    -fx-background-color: #83cee8 !important;
+    -fx-text-fill: black !important;
+}
+
+#squirtleBoton:hover{
+    -fx-background-color: #6db8d9 !important;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#bulbasaurBoton {
+    -fx-background-color: #83cbb1 !important;
+    -fx-text-fill: black !important;
+}
+
+#bulbasaurBoton:hover{
+   -fx-background-color: #66a98b !important;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+#mewtwoBoton {
+    -fx-background-color: #af89af !important;
+    -fx-text-fill: black !important;
+}
+
+#mewtwoBoton:hover {
+   -fx-background-color: #9b6e9b !important;
+   -fx-scale-x: 1.05;
+   -fx-scale-y: 1.05;
+}
+
+
+/* Efecto Hover */
+Button:hover {
+  -fx-background-color: #444444;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
 /* Texto principal */
 .text {
-    -fx-fill: white;
     -fx-font-size: 14px;
 }
 
@@ -65,3 +112,8 @@
 .combo-box .list-cell {
     -fx-text-fill: white;
 }
+/*Texto para el tableView */
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+
