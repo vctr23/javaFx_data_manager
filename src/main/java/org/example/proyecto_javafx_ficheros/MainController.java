@@ -197,9 +197,7 @@ public class MainController implements Initializable {
         }
     }
 
-    /**
-     * Detecta el tipo de base de datos y devuelve la URL de conexión
-     */
+    // Detecta el tipo de base de datos y devuelve la URL de conexión
     private String getDatabaseUrl(File file) throws IOException {
         String fileName = file.getName().toLowerCase();
         String filePath = file.getCanonicalPath();

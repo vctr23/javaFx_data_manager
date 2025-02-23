@@ -1,9 +1,6 @@
 package org.example.proyecto_javafx_ficheros;
 
-import file_exporters.CsvToJsonConverter;
-import file_exporters.CsvToXmlConverter;
-import file_exporters.XmlToCsvConverter;
-import file_exporters.XmlToJsonConverter;
+import file_exporters.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -60,28 +57,35 @@ public class PopUpController implements Initializable {
             } else if (selectedFile.getName().endsWith(".json") && comboBox.getValue().equals("json")) {
                 mostrarAlertaExportFileType();
             } else {
-                //Poner aqui el selectedFile.getName().endsWith()
-                String extension = selectedFile.getName().toLowerCase().substring(selectedFile.getName().toLowerCase().length() - 3);
-                switch (extension) {
-                    case "json" -> {
-                        System.out.println("json");
-                    }
-                    case "xml" -> {
-                        System.out.println("XML");
-                    }
-                    case "csv" -> {
-                        if (comboBox.getValue().equals("xml")) {
-                            CsvToXmlConverter.convertCsvToXml(selectedFile.getName(), nombreArchivo);
-                        } else {
-                            CsvToJsonConverter.convertCsvToJson(selectedFile.getName(), nombreArchivo);
-                        }
-                    }
-                    default -> System.out.println("Error en el case");
-                }
                 File myObj = new File("src/main/java/outputsFiles/" + nombreArchivo + "." + comboBox.getValue());
                 if (myObj.createNewFile()) {
                     System.out.println("Archivo creado: " + myObj.getName());
                     cerrarPopUp(actionEvent);
+                }
+                String extension = selectedFile.getName().toLowerCase().substring(selectedFile.getName().toLowerCase().length() - 3);
+                switch (extension) {
+                    case "json" -> {
+                        if (comboBox.getValue().equals("xml")) {
+                            JsonToXmlConverter.convertJsonToXml(selectedFile.getPath(), myObj.getPath());
+                        } else {
+                            JsonToCsvConverter.convertJsonToCsv(selectedFile.getPath(), myObj.getPath());
+                        }
+                    }
+                    case "xml" -> {
+                        if (comboBox.getValue().equals("json")) {
+                            XmlToJsonConverter.convertXmlToJson(selectedFile.getPath(), myObj.getPath());
+                        } else {
+                            XmlToCsvConverter.convertXmlToCsv(selectedFile.getPath(), myObj.getPath());
+                        }
+                    }
+                    case "csv" -> {
+                        if (comboBox.getValue().equals("xml")) {
+                            CsvToXmlConverter.convertCsvToXml(selectedFile.getPath(), myObj.getPath());
+                        } else {
+                            CsvToJsonConverter.convertCsvToJson(selectedFile.getPath(), myObj.getPath());
+                        }
+                    }
+                    default -> System.out.println("Error en el case");
                 }
             }
         } catch (IOException e) {

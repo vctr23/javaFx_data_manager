@@ -14,7 +14,10 @@ EN: File import and export application with JavaFX.
 
 Este proyecto deberia funcionar sin ningun requisito previo simplemente ejecutar:
 
-<code>git clone https://github.com/vctr23/javaFx_data_manager.git</code>
+<div align="center">
+
+```git clone https://github.com/vctr23/javaFx_data_manager.git```
+</div>
 
 ## Autores
 
