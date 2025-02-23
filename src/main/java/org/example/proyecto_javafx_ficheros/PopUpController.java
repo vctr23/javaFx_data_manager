@@ -14,15 +14,20 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
-import static org.example.proyecto_javafx_ficheros.MainController.fileType;
+import static org.example.proyecto_javafx_ficheros.MainController.*;
 
 public class PopUpController implements Initializable {
+
+    private MainController mainController;
+
     private File selectedFile;
 
     @FXML
@@ -58,34 +63,44 @@ public class PopUpController implements Initializable {
                 mostrarAlertaExportFileType();
             } else {
                 File myObj = new File("src/main/java/outputsFiles/" + nombreArchivo + "." + comboBox.getValue());
-                if (myObj.createNewFile()) {
-                    System.out.println("Archivo creado: " + myObj.getName());
-                    cerrarPopUp(actionEvent);
-                }
-                String extension = selectedFile.getName().toLowerCase().substring(selectedFile.getName().toLowerCase().length() - 3);
-                switch (extension) {
-                    case "json" -> {
-                        if (comboBox.getValue().equals("xml")) {
-                            JsonToXmlConverter.convertJsonToXml(selectedFile.getPath(), myObj.getPath());
-                        } else {
-                            JsonToCsvConverter.convertJsonToCsv(selectedFile.getPath(), myObj.getPath());
-                        }
+                if (myObj.exists()) {
+                    mostrarAlerta();
+                } else {
+                    if (myObj.createNewFile()) {
+                        System.out.println("Archivo creado: " + myObj.getName());
+                        // Llamar a la función mostrarFicheroImportado antes de cerrar el popup
+                        mainController.mostrarFicheroImportado(myObj, mainController);
+                        cerrarPopUp(actionEvent);
                     }
-                    case "xml" -> {
-                        if (comboBox.getValue().equals("json")) {
-                            XmlToJsonConverter.convertXmlToJson(selectedFile.getPath(), myObj.getPath());
-                        } else {
-                            XmlToCsvConverter.convertXmlToCsv(selectedFile.getPath(), myObj.getPath());
+                    String extension = selectedFile.getName().toLowerCase().substring(selectedFile.getName().toLowerCase().length() - 3);
+                    switch (extension) {
+                        case "son" -> {
+                            if (comboBox.getValue().equals("xml")) {
+                                JsonToXmlConverter.convertJsonToXml(selectedFile.getPath(), myObj.getPath());
+                            } else {
+                                JsonToCsvConverter.convertJsonToCsv(selectedFile.getPath(), myObj.getPath());
+                            }
                         }
-                    }
-                    case "csv" -> {
-                        if (comboBox.getValue().equals("xml")) {
-                            CsvToXmlConverter.convertCsvToXml(selectedFile.getPath(), myObj.getPath());
-                        } else {
-                            CsvToJsonConverter.convertCsvToJson(selectedFile.getPath(), myObj.getPath());
+                        case "xml" -> {
+                            if (comboBox.getValue().equals("json")) {
+                                XmlToJsonConverter.convertXmlToJson(selectedFile.getPath(), myObj.getPath());
+                            } else {
+                                XmlToCsvConverter.convertXmlToCsv(selectedFile.getPath(), myObj.getPath());
+                            }
                         }
+                        case "csv" -> {
+                            if (comboBox.getValue().equals("xml")) {
+                                CsvToXmlConverter.convertCsvToXml(selectedFile.getPath(), myObj.getPath());
+                            } else {
+                                CsvToJsonConverter.convertCsvToJson(selectedFile.getPath(), myObj.getPath());
+                            }
+                        }
+                        default -> System.out.println("Error en el case");
                     }
-                    default -> System.out.println("Error en el case");
+
+                    //funcion mostrarFicheroImportado
+                    mainController.mostrarFicheroImportado(myObj, mainController);
+
                 }
             }
         } catch (IOException e) {
@@ -96,6 +111,10 @@ public class PopUpController implements Initializable {
 
     public void setArchivoSeleccionado(File file) {
         this.selectedFile = file;
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 
     private void mostrarAlerta() {
@@ -110,7 +129,7 @@ public class PopUpController implements Initializable {
     private void mostrarAlertaExportFileType() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
-        alert.setHeaderText("Elije otra opción");
+        alert.setHeaderText("Elige otra opción");
         alert.setContentText("El archivo importado ya es de este tipo");
 
         alert.showAndWait();

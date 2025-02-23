@@ -31,6 +31,13 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class MainController implements Initializable {
+
+    public static MainController instance;
+
+    //Aqui ↓↓↓ se muestra el contenido del archivo importado
+    @FXML
+    private TextArea textAreaFilesExporteds;
+
     FileChooser fileChooser = new FileChooser();
     File file;
 
@@ -51,7 +58,20 @@ public class MainController implements Initializable {
 
     @FXML
     public void getDocument(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+// Establecer la carpeta inicial en la ruta del proyecto
+        File initialDir = new File("src/main/files");
+        fileChooser.setInitialDirectory(initialDir);
+
+// Agregar un solo filtro que permita archivos CSV, JSON y XML
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+                "CSV, JSON, and XML Files (*.csv, *.json, *.xml)", "*.csv", "*.json", "*.xml"
+        );
+        fileChooser.getExtensionFilters().add(filter);
+
         file = fileChooser.showOpenDialog(new Stage());
+
         if (file != null) {
             fileType = getFileType(file);
             System.out.println("The selected file type is: " + fileType);
@@ -75,6 +95,7 @@ public class MainController implements Initializable {
 
             PopUpController popUpController = loader.getController();
             popUpController.setArchivoSeleccionado(file);
+            popUpController.setMainController(this); // Pasa la instancia del MainController
 
             Stage popupStage = new Stage();
             popupStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
@@ -93,6 +114,12 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("src\\main\\java"));
     }
+
+    // Método para obtener la instancia
+    public static MainController getInstance() {
+        return instance;
+    }
+
 
     @FXML
     public void changeToFileView(MouseEvent event) throws Exception {
@@ -131,7 +158,19 @@ public class MainController implements Initializable {
     }
 
     public void getBDD_info() throws SQLException, IOException {
-        File file = fileChooser.showOpenDialog(new Stage());
+        FileChooser fileChooser = new FileChooser();
+
+        // Establecer la carpeta inicial en la ruta del proyecto
+        File initialDir = new File("src/main/files");
+        fileChooser.setInitialDirectory(initialDir);
+
+        // Agregar un solo filtro que permita archivos SQL y DB
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
+                "SQL, and DB Files (*.sql, *.db)", "*.sql", "*.db"
+        );
+        fileChooser.getExtensionFilters().add(filter);
+
+        file = fileChooser.showOpenDialog(new Stage());
 
         if (file != null && file.getName().endsWith(".db") || file.getName().endsWith(".sql")) {
             // Obtener URL de conexión según el tipo de base de datos
@@ -162,9 +201,7 @@ public class MainController implements Initializable {
             }
 
             // Conectar a la base de datos
-            try (Connection con = DriverManager.getConnection(dbUrl, username, password);
-                 Statement stmt = con.createStatement();
-                 ResultSet rs = stmt.executeQuery("SELECT * FROM juegos")) {
+            try (Connection con = DriverManager.getConnection(dbUrl, username, password); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery("SELECT * FROM juegos")) {
 
                 // Mostrar resultados en TableView
                 ResultSetMetaData metaData = rs.getMetaData();
@@ -211,7 +248,6 @@ public class MainController implements Initializable {
     }
 
     //Muestra un mensaje de error
-
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -221,12 +257,22 @@ public class MainController implements Initializable {
     }
 
 
+    public void mostrarFicheroImportado(File myObj, MainController mainController) {
+        System.out.println("Hasta aca no da error + " + myObj.getName());
+        try {
+            Scanner sc = new Scanner(myObj);
+            textAreaFilesExporteds.clear();
+            while (sc.hasNextLine()) {
+                textAreaFilesExporteds.appendText(sc.nextLine() + "\n");
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void buscarPikachu() throws IOException {
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/pikachu"))
-                .GET()
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/pikachu")).GET().build();
 
         HttpResponse<String> response = null;
         try {
@@ -254,21 +300,14 @@ public class MainController implements Initializable {
 
             // Mostramos los resultados
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" +
-                    "Primer juego: " + primerJuego + "\n" +
-                    "Vida: " + vida + "\n" +
-                    "Ataque: " + ataque + "\n" +
-                    "Defensa: " + defensa);
+            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
 
         }
     }
 
 
     public void buscarSquirtle(ActionEvent actionEvent) throws IOException {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/squirtle"))
-                .GET()
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/squirtle")).GET().build();
 
         HttpResponse<String> response = null;
         try {
@@ -296,20 +335,13 @@ public class MainController implements Initializable {
 
             // Mostramos los resultados
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" +
-                    "Primer juego: " + primerJuego + "\n" +
-                    "Vida: " + vida + "\n" +
-                    "Ataque: " + ataque + "\n" +
-                    "Defensa: " + defensa);
+            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
 
         }
     }
 
     public void buscarBulbasur(ActionEvent actionEvent) {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/bulbasaur"))
-                .GET()
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/bulbasaur")).GET().build();
 
         HttpResponse<String> response = null;
         try {
@@ -337,20 +369,13 @@ public class MainController implements Initializable {
 
             // Mostramos los resultados
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" +
-                    "Primer juego: " + primerJuego + "\n" +
-                    "Vida: " + vida + "\n" +
-                    "Ataque: " + ataque + "\n" +
-                    "Defensa: " + defensa);
+            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
 
         }
     }
 
     public void buscarMewtwo(ActionEvent actionEvent) {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon/mewtwo"))
-                .GET()
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/mewtwo")).GET().build();
 
         HttpResponse<String> response = null;
         try {
@@ -378,11 +403,7 @@ public class MainController implements Initializable {
 
             // Mostramos los resultados
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" +
-                    "Primer juego: " + primerJuego + "\n" +
-                    "Vida: " + vida + "\n" +
-                    "Ataque: " + ataque + "\n" +
-                    "Defensa: " + defensa);
+            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
 
         }
     }
