@@ -65,9 +65,7 @@ public class MainController implements Initializable {
         fileChooser.setInitialDirectory(initialDir);
 
 // Agregar un solo filtro que permita archivos CSV, JSON y XML
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-                "CSV, JSON, and XML Files (*.csv, *.json, *.xml)", "*.csv", "*.json", "*.xml"
-        );
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("CSV, JSON, and XML Files (*.csv, *.json, *.xml)", "*.csv", "*.json", "*.xml");
         fileChooser.getExtensionFilters().add(filter);
 
         file = fileChooser.showOpenDialog(new Stage());
@@ -110,6 +108,36 @@ public class MainController implements Initializable {
         }
     }
 
+    @FXML
+    void showPopUp_API(MouseEvent event) {
+        // Si textAreaExport esta vacio no se abre el pop-up
+        // Si textAreaExport esta vacio no se abre el pop-up
+        if (textAreaExport.getText().isEmpty()) {
+            showError("Primero realice una búsqueda.");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+            Parent root = loader.load();
+
+            PopUpController popUpController = loader.getController();
+            popUpController.setArchivoSeleccionado(file);
+            popUpController.setMainController(this); // Pasa la instancia del MainController
+
+            Stage popupStage = new Stage();
+            popupStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Filename");
+
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+            popupStage.showAndWait(); // Bloquea la ventana principal hasta que se cierre el pop-up
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("src\\main\\java"));
@@ -138,6 +166,7 @@ public class MainController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("API-view.fxml"));
         Stage stage = new Stage();
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
+
         stage.setScene(new Scene(root));
         stage.setTitle("API view");
         stage.show();
@@ -165,9 +194,7 @@ public class MainController implements Initializable {
         fileChooser.setInitialDirectory(initialDir);
 
         // Agregar un solo filtro que permita archivos SQL y DB
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-                "SQL, and DB Files (*.sql, *.db)", "*.sql", "*.db"
-        );
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("SQL, and DB Files (*.sql, *.db)", "*.sql", "*.db");
         fileChooser.getExtensionFilters().add(filter);
 
         file = fileChooser.showOpenDialog(new Stage());
@@ -248,7 +275,7 @@ public class MainController implements Initializable {
     }
 
     //Muestra un mensaje de error
-    private void showError(String message) {
+    static void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Ocurrió un problema");
@@ -270,8 +297,7 @@ public class MainController implements Initializable {
         }
     }
 
-    public void buscarPikachu() throws IOException {
-
+    public void buscarPikachu() {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/pikachu")).GET().build();
 
         HttpResponse<String> response = null;
@@ -285,28 +311,30 @@ public class MainController implements Initializable {
             // Convertimos la respuesta en un objeto JSON
             JSONObject jsonResponse = new JSONObject(response.body());
 
-            // Extraemos el nombre
-            String nombre = jsonResponse.getString("name");
-
-            // Extraemos el primer juego en el que apareció
+            // Crear un nuevo objeto JSON con los campos requeridos
+            JSONObject filteredResponse = new JSONObject();
+            filteredResponse.put("nombre", jsonResponse.getString("name"));
             JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
             String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+            filteredResponse.put("primer_juego", primerJuego);
 
             // Extraemos las estadísticas
             JSONArray stats = jsonResponse.getJSONArray("stats");
             int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
             int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
             int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+            filteredResponse.put("vida", vida);
+            filteredResponse.put("ataque", ataque);
+            filteredResponse.put("defensa", defensa);
 
-            // Mostramos los resultados
+            // Escribir el JSON filtrado en el TextArea
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
-
+            textAreaExport.appendText(filteredResponse.toString(4)); // Formateamos con indentación de 4 espacios
         }
     }
 
 
-    public void buscarSquirtle(ActionEvent actionEvent) throws IOException {
+    public void buscarSquirtle(ActionEvent actionEvent) {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://pokeapi.co/api/v2/pokemon/squirtle")).GET().build();
 
         HttpResponse<String> response = null;
@@ -320,23 +348,25 @@ public class MainController implements Initializable {
             // Convertimos la respuesta en un objeto JSON
             JSONObject jsonResponse = new JSONObject(response.body());
 
-            // Extraemos el nombre
-            String nombre = jsonResponse.getString("name");
-
-            // Extraemos el primer juego en el que apareció
+            // Crear un nuevo objeto JSON con los campos requeridos
+            JSONObject filteredResponse = new JSONObject();
+            filteredResponse.put("nombre", jsonResponse.getString("name"));
             JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
             String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+            filteredResponse.put("primer_juego", primerJuego);
 
             // Extraemos las estadísticas
             JSONArray stats = jsonResponse.getJSONArray("stats");
             int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
             int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
             int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+            filteredResponse.put("vida", vida);
+            filteredResponse.put("ataque", ataque);
+            filteredResponse.put("defensa", defensa);
 
-            // Mostramos los resultados
+            // Escribir el JSON filtrado en el TextArea
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
-
+            textAreaExport.appendText(filteredResponse.toString(4)); // Formateamos con indentación de 4 espacios
         }
     }
 
@@ -354,23 +384,25 @@ public class MainController implements Initializable {
             // Convertimos la respuesta en un objeto JSON
             JSONObject jsonResponse = new JSONObject(response.body());
 
-            // Extraemos el nombre
-            String nombre = jsonResponse.getString("name");
-
-            // Extraemos el primer juego en el que apareció
+            // Crear un nuevo objeto JSON con los campos requeridos
+            JSONObject filteredResponse = new JSONObject();
+            filteredResponse.put("nombre", jsonResponse.getString("name"));
             JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
             String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+            filteredResponse.put("primer_juego", primerJuego);
 
             // Extraemos las estadísticas
             JSONArray stats = jsonResponse.getJSONArray("stats");
             int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
             int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
             int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+            filteredResponse.put("vida", vida);
+            filteredResponse.put("ataque", ataque);
+            filteredResponse.put("defensa", defensa);
 
-            // Mostramos los resultados
+            // Escribir el JSON filtrado en el TextArea
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
-
+            textAreaExport.appendText(filteredResponse.toString(4)); // Formateamos con indentación de 4 espacios
         }
     }
 
@@ -388,25 +420,28 @@ public class MainController implements Initializable {
             // Convertimos la respuesta en un objeto JSON
             JSONObject jsonResponse = new JSONObject(response.body());
 
-            // Extraemos el nombre
-            String nombre = jsonResponse.getString("name");
-
-            // Extraemos el primer juego en el que apareció
+            // Crear un nuevo objeto JSON con los campos requeridos
+            JSONObject filteredResponse = new JSONObject();
+            filteredResponse.put("nombre", jsonResponse.getString("name"));
             JSONArray gameIndices = jsonResponse.getJSONArray("game_indices");
             String primerJuego = !gameIndices.isEmpty() ? gameIndices.getJSONObject(0).getJSONObject("version").getString("name") : "Desconocido";
+            filteredResponse.put("primer_juego", primerJuego);
 
             // Extraemos las estadísticas
             JSONArray stats = jsonResponse.getJSONArray("stats");
             int vida = stats.getJSONObject(0).getInt("base_stat");    // HP
             int ataque = stats.getJSONObject(1).getInt("base_stat");  // Ataque
             int defensa = stats.getJSONObject(2).getInt("base_stat"); // Defensa
+            filteredResponse.put("vida", vida);
+            filteredResponse.put("ataque", ataque);
+            filteredResponse.put("defensa", defensa);
 
-            // Mostramos los resultados
+            // Escribir el JSON filtrado en el TextArea
             textAreaExport.clear();
-            textAreaExport.appendText("Nombre: " + nombre + "\n" + "Primer juego: " + primerJuego + "\n" + "Vida: " + vida + "\n" + "Ataque: " + ataque + "\n" + "Defensa: " + defensa);
-
+            textAreaExport.appendText(filteredResponse.toString(4)); // Formateamos con indentación de 4 espacios
         }
     }
+
 
     public static String getFileType(File file) {
         String fileName = file.getName().toLowerCase();
@@ -420,6 +455,29 @@ public class MainController implements Initializable {
             return "Text";
         } else {
             return "Unknown";
+        }
+    }
+
+    public void showPopUp_DB(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+            Parent root = loader.load();
+
+            PopUpController popUpController = loader.getController();
+            popUpController.setArchivoSeleccionado(file);
+            popUpController.setMainController(this); // Pasa la instancia del MainController
+            popUpController.setTableView(tableView); // Pasa la referencia del TableView
+
+            Stage popupStage = new Stage();
+            popupStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/JavaFx_icon.png")));
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setTitle("Filename");
+
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+            popupStage.showAndWait(); // Bloquea la ventana principal hasta que se cierre el pop-up
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

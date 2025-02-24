@@ -51,7 +51,7 @@
         </HBox.margin>
     </VBox>
     <VBox prefHeight="400.0" prefWidth="300.0">
-        <Button mnemonicParsing="false" onMouseClicked="#showPopUp" prefHeight="30.0" prefWidth="90.0" text="Export to...">
+        <Button mnemonicParsing="false" onMouseClicked="#showPopUp_DB" prefHeight="30.0" prefWidth="90.0" text="Export to...">
             <VBox.margin>
                 <Insets bottom="10.0" left="100.0" top="10.0" />
             </VBox.margin>
